@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:include="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>user dashboard page</title>
+
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-body">
+						
+							<h3 class="mb-3">Change password</h3>
+							
+							<form th:action="@{/user/change_password}" method="post">
+							
+							<!-- old password -->
+								<div class="form-group">
+									<input name="oldPassword" type="password" class="form-control"
+										placeholder="Enter old password" />
+								</div>
+								
+								<!-- new password -->
+								<div class="form-group">
+									<input name="newPassword"  type="password" class="form-control"
+										placeholder="Enter new password" />
+								</div>
+								
+								<div class="container text-center">
+									<button type="submit" class="btn btn-success">Change</button>
+									<button type="reset" class="btn btn-warning">Reset</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		//to active links
+		$(document).ready(()=>{
+			$(".item").removeClass("activebar");
+			$("#setting_link").addClass("activebar");
+		  }); 	
+		</script>
+	</section>
+</body>
+</html>
+
+
+

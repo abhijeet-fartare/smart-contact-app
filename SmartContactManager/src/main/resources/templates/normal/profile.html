@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:include="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>user dashboard page</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+			<div class="card-body">
+
+				<img th:src="@{/img/admin.png}" alt="Profile Photo"
+					style="width: 100px;" class="profile-photo mt-3">
+
+				<h1 class="text-center text-info mt-2">
+					<span th:text="${user.name}"></span>
+				</h1>
+				<div class="container text-center ">
+					<i th:text="${user.email}"></i>
+				</div>
+
+				<div class="container mt-5">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="text-center" scope="col">USER_ID</th>
+									<th class="text-center" scope="col">SCMUSER<span
+										th:text="${user.id}"></span></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="text-center" scope="col">Role</td>
+									<td class="text-center" scope="col" th:text="${user.role}"></td>
+								</tr>
+								<tr>
+									<td class="text-center" scope="col">About</td>
+									<td class="text-center" scope="col" th:text="${user.about}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--  <div class="container text-center">
+						<a th:href="@{'/user/delete_user/'+${user.id}}"
+							class="btn btn-danger btn-sm">Delete</a> <a
+							th:href="@{'/user/update_user/'+${user.id}}"
+							class="btn btn-primary btn-sm">Update</a>
+					</div> -->
+				</div>
+			</div>
+		</div>
+		<script>
+		//to active links
+		$(document).ready(()=>{
+			$(".item").removeClass("activebar");
+			$("#profile_link").addClass("activebar");
+		  }); 	
+		</script>
+	</section>
+</body>
+</html>
+
+
+

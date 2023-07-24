@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:include="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>user dashboard page</title>
+</head>
+<body>
+	<section>
+		<div class="card  mr-3 ml-2">
+			<div class="card-body">
+				<h1 class="text-center">Update contact</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-7 offset-md-2">
+							<form action="" th:action="@{/user/process_update}" method="post"
+								th:object="${contact}" onsubmit="return validateForm()"
+								name="contactForm" enctype="multipart/form-data" class="mt-2">
+
+								<!--sended Id with form in hidden so we get after update also  -->
+								<input th:value="${contact.Cid}" type="hidden" name="Cid">
+								</input>
+
+								<!-- first name -->
+
+								<div class="form-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-user-alt"></i>
+										</div>
+										<input th:value="${contact.firstName}" type="text"
+											id="firstName" name="firstName"
+											placeholder="Enter first name here" class="form-control" />
+									</div>
+									<div id="name-field-msg" class="text-danger ml-4 "></div>
+								</div>
+
+								<!-- last name -->
+								<div class="form-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-plus"></i>
+										</div>
+										<input th:value="${contact.lastName}" type="text"
+											id="lastName" name="lastName"
+											placeholder="Enter last name here" class="form-control" />
+									</div>
+								</div>
+
+								<!-- phone field -->
+								<div class="form-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-phone"></i>
+										</div>
+										<input th:value="${contact.phone}" type="number" id="phone"
+											name="phone" placeholder="Enter phone number here"
+											class="form-control " />
+									</div>
+									<!--  used phone-field-msg to fetch data from class phone-field  -->
+									<div id="phone-field-msg" class=" text-danger ml-4 "></div>
+								</div>
+
+								<!-- Email field -->
+								<div class="form-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">@</div>
+										<!--  Added Client side validation using type -->
+										<input th:value="${contact.email}" type="email" id="email"
+											name="email" placeholder="Enter email here"
+											class="form-control" />
+									</div>
+								</div>
+
+								<!-- work field -->
+								<div class="form-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-briefcase"></i>
+										</div>
+										<input th:value="${contact.work}" type="text" id="work"
+											name="work" placeholder="Enter work here"
+											class="form-control" />
+									</div>
+								</div>
+
+								<!-- Contact discription -->
+								<div class="form-group mt-3 ">
+									<textarea th:text="${contact.description}" id="mytextarea"
+										rows="10" name="description"
+										placeholder="Enter contact description" class="form-control"></textarea>
+								</div>
+
+								<!-- contact image -->
+								<div class="custom-file">
+									<input type="file" name="profile" />
+								</div>
+
+
+								<!-- submit  -->
+								<div class="container text-center">
+									<button type="submit" value="sumbit" name="submit"
+										id="submitbtn" class="btn btn-outline-primary">Submit
+										Button</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script
+			src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
+			referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector : '#mytextarea'
+			});
+		</script>
+	</section>
+</body>
+</html>
+
+
+
+

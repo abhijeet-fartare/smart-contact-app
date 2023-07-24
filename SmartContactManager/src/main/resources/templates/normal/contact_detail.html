@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:include="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>user dashboard page</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3 ml-3" th:if="${contact}">
+			<div class="card-body">
+
+				<img th:src="@{/img/profile.png}" alt="Profile Photo"
+					style="width: 100px;" class="profile-photo mt-3">
+
+				<h1 class="text-center text-info mt-2">
+					<span th:text="${contact.firstName+'  '}"></span><span
+						th:text="${contact.lastName}"></span>
+				</h1>
+				<div class="container text-center ">
+					<i th:text="${contact.email}"></i>
+				</div>
+
+				<div class="container mt-5">
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="text-center" scope="col">ID</th>
+								<th class="text-center" scope="col">SCMCONTACT<span
+									th:text="${user.id}"></span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="text-center" scope="col">Phone</td>
+								<td class="text-center" scope="col" th:text="${contact.phone}"></td>
+							</tr>
+							<tr>
+								<td class="text-center" scope="col">Work
+								<td class="text-center" scope="col" th:text="${contact.work}"></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="container description text-center">
+						<th:block th:utext="${contact.description}"></th:block>
+					</div>
+
+					<div class="container text-center">
+						<a th:href="@{'/user/delete_contact/'+${contact.Cid}}"
+							class="btn btn-danger btn-sm">Delete</a> <a
+							th:href="@{'/user/update_contact/'+${contact.Cid}}"
+							class="btn btn-primary btn-sm">Update</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<h1 class=" text-center p-3 bg-danger text-white"
+			th:unless="${contact}">You dont't have to permission to see this
+			contact</h1>
+	</section>
+</body>
+</html>
+
+
+
+
